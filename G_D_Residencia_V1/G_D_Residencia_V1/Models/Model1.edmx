@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RESIDENT_SYSTEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EDIFICIOS">
+          <Key>
+            <PropertyRef Name="id_edificio" />
+          </Key>
+          <Property Name="id_edificio" Type="int" Nullable="false" />
+          <Property Name="cantidad_pisos" Type="int" Nullable="false" />
+          <Property Name="estado_edificio" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HABITACIONES">
+          <Key>
+            <PropertyRef Name="id_habitacion" />
+          </Key>
+          <Property Name="id_habitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_edificio" Type="int" Nullable="false" />
+          <Property Name="piso" Type="int" Nullable="false" />
+          <Property Name="habitacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="estado_habitacion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPORTES_AVERIAS">
+          <Key>
+            <PropertyRef Name="id_averia" />
+          </Key>
+          <Property Name="id_averia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="descripcion_averia" Type="text" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha_solicitud" Type="datetime" Nullable="false" />
+          <Property Name="fecha_respuesta" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_ESTANCIA">
+          <Key>
+            <PropertyRef Name="id_solicitud" />
+          </Key>
+          <Property Name="id_solicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="motivo_solicitud" Type="text" />
+          <Property Name="seguro_medico" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="carta_conducta" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_solicitud" Type="datetime" Nullable="false" />
+          <Property Name="fecha_respuesta" Type="datetime" />
+          <Property Name="estado_solicitud" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_SALIDA">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Name="id_salida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="tipo_solicitud" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha_inicio" Type="datetime" Nullable="false" />
+          <Property Name="fecha_fin" Type="datetime" Nullable="false" />
+          <Property Name="motivo" Type="text" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="id_tipo_usuario" />
+          </Key>
+          <Property Name="id_tipo_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tipo_usuario" Type="int" Nullable="false" />
+          <Property Name="id_habitacion" Type="int" />
+          <Property Name="nombres" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellidos" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="matricula" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="12" />
+          <Property Name="estado_usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha_nac" Type="datetime" Nullable="false" />
+          <Property Name="sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="direccion" Type="text" />
+        </EntityType>
+        <Association Name="FK__HABITACIO__id_ed__74AE54BC">
+          <End Role="EDIFICIOS" Type="Self.EDIFICIOS" Multiplicity="1" />
+          <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDIFICIOS">
+              <PropertyRef Name="id_edificio" />
+            </Principal>
+            <Dependent Role="HABITACIONES">
+              <PropertyRef Name="id_edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTES___id_us__1332DBDC">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="REPORTES_AVERIAS" Type="Self.REPORTES_AVERIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="REPORTES_AVERIAS">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SOLICITUD__id_us__0E6E26BF">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="SOLICITUD_ESTANCIA" Type="Self.SOLICITUD_ESTANCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="SOLICITUD_ESTANCIA">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SOLICITUD__id_us__17036CC0">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="SOLICITUD_SALIDA" Type="Self.SOLICITUD_SALIDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="SOLICITUD_SALIDA">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__id_hab__09A971A2">
+          <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="0..1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACIONES">
+              <PropertyRef Name="id_habitacion" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="id_habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__id_tip__08B54D69">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_USUARIO">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RESIDENT_SYSTEMModelStoreContainer">
+          <EntitySet Name="EDIFICIOS" EntityType="Self.EDIFICIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HABITACIONES" EntityType="Self.HABITACIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPORTES_AVERIAS" EntityType="Self.REPORTES_AVERIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOLICITUD_ESTANCIA" EntityType="Self.SOLICITUD_ESTANCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOLICITUD_SALIDA" EntityType="Self.SOLICITUD_SALIDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HABITACIO__id_ed__74AE54BC" Association="Self.FK__HABITACIO__id_ed__74AE54BC">
+            <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+            <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTES___id_us__1332DBDC" Association="Self.FK__REPORTES___id_us__1332DBDC">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="REPORTES_AVERIAS" EntitySet="REPORTES_AVERIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SOLICITUD__id_us__0E6E26BF" Association="Self.FK__SOLICITUD__id_us__0E6E26BF">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUD_ESTANCIA" EntitySet="SOLICITUD_ESTANCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SOLICITUD__id_us__17036CC0" Association="Self.FK__SOLICITUD__id_us__17036CC0">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUD_SALIDA" EntitySet="SOLICITUD_SALIDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__id_hab__09A971A2" Association="Self.FK__USUARIOS__id_hab__09A971A2">
+            <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__id_tip__08B54D69" Association="Self.FK__USUARIOS__id_tip__08B54D69">
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RESIDENT_SYSTEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EDIFICIO">
+          <Key>
+            <PropertyRef Name="id_edificio" />
+          </Key>
+          <Property Name="id_edificio" Type="Int32" Nullable="false" />
+          <Property Name="cantidad_pisos" Type="Int32" Nullable="false" />
+          <Property Name="estado_edificio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HABITACIONES" Relationship="Self.FK__HABITACIO__id_ed__74AE54BC" FromRole="EDIFICIOS" ToRole="HABITACIONES" />
+        </EntityType>
+        <EntityType Name="HABITACIONE">
+          <Key>
+            <PropertyRef Name="id_habitacion" />
+          </Key>
+          <Property Name="id_habitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_edificio" Type="Int32" Nullable="false" />
+          <Property Name="piso" Type="Int32" Nullable="false" />
+          <Property Name="habitacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_habitacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EDIFICIO" Relationship="Self.FK__HABITACIO__id_ed__74AE54BC" FromRole="HABITACIONES" ToRole="EDIFICIOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__id_hab__09A971A2" FromRole="HABITACIONES" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="REPORTES_AVERIAS">
+          <Key>
+            <PropertyRef Name="id_averia" />
+          </Key>
+          <Property Name="id_averia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="descripcion_averia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_respuesta" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__REPORTES___id_us__1332DBDC" FromRole="REPORTES_AVERIAS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_ESTANCIA">
+          <Key>
+            <PropertyRef Name="id_solicitud" />
+          </Key>
+          <Property Name="id_solicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="motivo_solicitud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="seguro_medico" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="carta_conducta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_respuesta" Type="DateTime" Precision="3" />
+          <Property Name="estado_solicitud" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__SOLICITUD__id_us__0E6E26BF" FromRole="SOLICITUD_ESTANCIA" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_SALIDA">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Name="id_salida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="tipo_solicitud" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__SOLICITUD__id_us__17036CC0" FromRole="SOLICITUD_SALIDA" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="id_tipo_usuario" />
+          </Key>
+          <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__id_tip__08B54D69" FromRole="TIPO_USUARIO" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_habitacion" Type="Int32" />
+          <Property Name="nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matricula" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="estado_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HABITACIONE" Relationship="Self.FK__USUARIOS__id_hab__09A971A2" FromRole="USUARIOS" ToRole="HABITACIONES" />
+          <NavigationProperty Name="REPORTES_AVERIAS" Relationship="Self.FK__REPORTES___id_us__1332DBDC" FromRole="USUARIOS" ToRole="REPORTES_AVERIAS" />
+          <NavigationProperty Name="SOLICITUD_ESTANCIA" Relationship="Self.FK__SOLICITUD__id_us__0E6E26BF" FromRole="USUARIOS" ToRole="SOLICITUD_ESTANCIA" />
+          <NavigationProperty Name="SOLICITUD_SALIDA" Relationship="Self.FK__SOLICITUD__id_us__17036CC0" FromRole="USUARIOS" ToRole="SOLICITUD_SALIDA" />
+          <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK__USUARIOS__id_tip__08B54D69" FromRole="USUARIOS" ToRole="TIPO_USUARIO" />
+        </EntityType>
+        <Association Name="FK__HABITACIO__id_ed__74AE54BC">
+          <End Role="EDIFICIOS" Type="Self.EDIFICIO" Multiplicity="1" />
+          <End Role="HABITACIONES" Type="Self.HABITACIONE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDIFICIOS">
+              <PropertyRef Name="id_edificio" />
+            </Principal>
+            <Dependent Role="HABITACIONES">
+              <PropertyRef Name="id_edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__id_hab__09A971A2">
+          <End Role="HABITACIONES" Type="Self.HABITACIONE" Multiplicity="0..1" />
+          <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACIONES">
+              <PropertyRef Name="id_habitacion" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="id_habitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPORTES___id_us__1332DBDC">
+          <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="REPORTES_AVERIAS" Type="Self.REPORTES_AVERIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="REPORTES_AVERIAS">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SOLICITUD__id_us__0E6E26BF">
+          <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="SOLICITUD_ESTANCIA" Type="Self.SOLICITUD_ESTANCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="SOLICITUD_ESTANCIA">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SOLICITUD__id_us__17036CC0">
+          <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="SOLICITUD_SALIDA" Type="Self.SOLICITUD_SALIDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="SOLICITUD_SALIDA">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__id_tip__08B54D69">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_USUARIO">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="id_tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RESIDENT_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EDIFICIOS" EntityType="Self.EDIFICIO" />
+          <EntitySet Name="HABITACIONES" EntityType="Self.HABITACIONE" />
+          <EntitySet Name="REPORTES_AVERIAS" EntityType="Self.REPORTES_AVERIAS" />
+          <EntitySet Name="SOLICITUD_ESTANCIA" EntityType="Self.SOLICITUD_ESTANCIA" />
+          <EntitySet Name="SOLICITUD_SALIDA" EntityType="Self.SOLICITUD_SALIDA" />
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK__HABITACIO__id_ed__74AE54BC" Association="Self.FK__HABITACIO__id_ed__74AE54BC">
+            <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+            <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__id_hab__09A971A2" Association="Self.FK__USUARIOS__id_hab__09A971A2">
+            <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPORTES___id_us__1332DBDC" Association="Self.FK__REPORTES___id_us__1332DBDC">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="REPORTES_AVERIAS" EntitySet="REPORTES_AVERIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SOLICITUD__id_us__0E6E26BF" Association="Self.FK__SOLICITUD__id_us__0E6E26BF">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUD_ESTANCIA" EntitySet="SOLICITUD_ESTANCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SOLICITUD__id_us__17036CC0" Association="Self.FK__SOLICITUD__id_us__17036CC0">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUD_SALIDA" EntitySet="SOLICITUD_SALIDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__id_tip__08B54D69" Association="Self.FK__USUARIOS__id_tip__08B54D69">
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RESIDENT_SYSTEMModelStoreContainer" CdmEntityContainer="RESIDENT_SYSTEMEntities">
+          <EntitySetMapping Name="EDIFICIOS">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.EDIFICIO">
+              <MappingFragment StoreEntitySet="EDIFICIOS">
+                <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
+                <ScalarProperty Name="cantidad_pisos" ColumnName="cantidad_pisos" />
+                <ScalarProperty Name="estado_edificio" ColumnName="estado_edificio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HABITACIONES">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.HABITACIONE">
+              <MappingFragment StoreEntitySet="HABITACIONES">
+                <ScalarProperty Name="id_habitacion" ColumnName="id_habitacion" />
+                <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
+                <ScalarProperty Name="piso" ColumnName="piso" />
+                <ScalarProperty Name="habitacion" ColumnName="habitacion" />
+                <ScalarProperty Name="estado_habitacion" ColumnName="estado_habitacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTES_AVERIAS">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.REPORTES_AVERIAS">
+              <MappingFragment StoreEntitySet="REPORTES_AVERIAS">
+                <ScalarProperty Name="id_averia" ColumnName="id_averia" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="descripcion_averia" ColumnName="descripcion_averia" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+                <ScalarProperty Name="fecha_respuesta" ColumnName="fecha_respuesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_ESTANCIA">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.SOLICITUD_ESTANCIA">
+              <MappingFragment StoreEntitySet="SOLICITUD_ESTANCIA">
+                <ScalarProperty Name="id_solicitud" ColumnName="id_solicitud" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="motivo_solicitud" ColumnName="motivo_solicitud" />
+                <ScalarProperty Name="seguro_medico" ColumnName="seguro_medico" />
+                <ScalarProperty Name="carta_conducta" ColumnName="carta_conducta" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+                <ScalarProperty Name="fecha_respuesta" ColumnName="fecha_respuesta" />
+                <ScalarProperty Name="estado_solicitud" ColumnName="estado_solicitud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_SALIDA">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.SOLICITUD_SALIDA">
+              <MappingFragment StoreEntitySet="SOLICITUD_SALIDA">
+                <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="tipo_solicitud" ColumnName="tipo_solicitud" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_USUARIO">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.TIPO_USUARIO">
+              <MappingFragment StoreEntitySet="TIPO_USUARIO">
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+                <ScalarProperty Name="id_habitacion" ColumnName="id_habitacion" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="estado_usuario" ColumnName="estado_usuario" />
+                <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

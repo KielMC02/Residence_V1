@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ce6b3da03814ea08cc3f98e8e104f01" Name="Diagram1">
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.EDIFICIO" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.HABITACIONE" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.REPORTES_AVERIAS" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.SOLICITUD_ESTANCIA" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.SOLICITUD_SALIDA" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.TIPO_USUARIO" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.USUARIO" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__HABITACIO__id_ed__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__USUARIOS__id_hab__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__REPORTES___id_us__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__SOLICITUD__id_us__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__SOLICITUD__id_us__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__USUARIOS__id_tip__08B54D69" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

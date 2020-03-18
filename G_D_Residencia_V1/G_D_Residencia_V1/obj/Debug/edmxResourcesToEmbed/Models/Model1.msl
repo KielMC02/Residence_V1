@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RESIDENT_SYSTEMModelStoreContainer" CdmEntityContainer="RESIDENT_SYSTEMEntities">
+    <EntitySetMapping Name="EDIFICIOS">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.EDIFICIO">
+        <MappingFragment StoreEntitySet="EDIFICIOS">
+          <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
+          <ScalarProperty Name="cantidad_pisos" ColumnName="cantidad_pisos" />
+          <ScalarProperty Name="estado_edificio" ColumnName="estado_edificio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HABITACIONES">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.HABITACIONE">
+        <MappingFragment StoreEntitySet="HABITACIONES">
+          <ScalarProperty Name="id_habitacion" ColumnName="id_habitacion" />
+          <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
+          <ScalarProperty Name="piso" ColumnName="piso" />
+          <ScalarProperty Name="habitacion" ColumnName="habitacion" />
+          <ScalarProperty Name="estado_habitacion" ColumnName="estado_habitacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTES_AVERIAS">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.REPORTES_AVERIAS">
+        <MappingFragment StoreEntitySet="REPORTES_AVERIAS">
+          <ScalarProperty Name="id_averia" ColumnName="id_averia" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="descripcion_averia" ColumnName="descripcion_averia" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="fecha_respuesta" ColumnName="fecha_respuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD_ESTANCIA">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.SOLICITUD_ESTANCIA">
+        <MappingFragment StoreEntitySet="SOLICITUD_ESTANCIA">
+          <ScalarProperty Name="id_solicitud" ColumnName="id_solicitud" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="motivo_solicitud" ColumnName="motivo_solicitud" />
+          <ScalarProperty Name="seguro_medico" ColumnName="seguro_medico" />
+          <ScalarProperty Name="carta_conducta" ColumnName="carta_conducta" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="fecha_respuesta" ColumnName="fecha_respuesta" />
+          <ScalarProperty Name="estado_solicitud" ColumnName="estado_solicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD_SALIDA">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.SOLICITUD_SALIDA">
+        <MappingFragment StoreEntitySet="SOLICITUD_SALIDA">
+          <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="tipo_solicitud" ColumnName="tipo_solicitud" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_USUARIO">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.TIPO_USUARIO">
+        <MappingFragment StoreEntitySet="TIPO_USUARIO">
+          <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_tipo_usuario" ColumnName="id_tipo_usuario" />
+          <ScalarProperty Name="id_habitacion" ColumnName="id_habitacion" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="estado_usuario" ColumnName="estado_usuario" />
+          <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

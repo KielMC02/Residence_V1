@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RESIDENT_SYSTEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EDIFICIO">
+    <Key>
+      <PropertyRef Name="id_edificio" />
+    </Key>
+    <Property Name="id_edificio" Type="Int32" Nullable="false" />
+    <Property Name="cantidad_pisos" Type="Int32" Nullable="false" />
+    <Property Name="estado_edificio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HABITACIONES" Relationship="Self.FK__HABITACIO__id_ed__74AE54BC" FromRole="EDIFICIOS" ToRole="HABITACIONES" />
+  </EntityType>
+  <EntityType Name="HABITACIONE">
+    <Key>
+      <PropertyRef Name="id_habitacion" />
+    </Key>
+    <Property Name="id_habitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_edificio" Type="Int32" Nullable="false" />
+    <Property Name="piso" Type="Int32" Nullable="false" />
+    <Property Name="habitacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado_habitacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EDIFICIO" Relationship="Self.FK__HABITACIO__id_ed__74AE54BC" FromRole="HABITACIONES" ToRole="EDIFICIOS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__id_hab__09A971A2" FromRole="HABITACIONES" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="REPORTES_AVERIAS">
+    <Key>
+      <PropertyRef Name="id_averia" />
+    </Key>
+    <Property Name="id_averia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="descripcion_averia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fecha_respuesta" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK__REPORTES___id_us__1332DBDC" FromRole="REPORTES_AVERIAS" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_ESTANCIA">
+    <Key>
+      <PropertyRef Name="id_solicitud" />
+    </Key>
+    <Property Name="id_solicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="motivo_solicitud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="seguro_medico" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carta_conducta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fecha_respuesta" Type="DateTime" Precision="3" />
+    <Property Name="estado_solicitud" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK__SOLICITUD__id_us__0E6E26BF" FromRole="SOLICITUD_ESTANCIA" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_SALIDA">
+    <Key>
+      <PropertyRef Name="id_salida" />
+    </Key>
+    <Property Name="id_salida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="tipo_solicitud" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK__SOLICITUD__id_us__17036CC0" FromRole="SOLICITUD_SALIDA" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="TIPO_USUARIO">
+    <Key>
+      <PropertyRef Name="id_tipo_usuario" />
+    </Key>
+    <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__id_tip__08B54D69" FromRole="TIPO_USUARIO" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" />
+    <Property Name="id_habitacion" Type="Int32" />
+    <Property Name="nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="matricula" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="estado_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_nac" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HABITACIONE" Relationship="Self.FK__USUARIOS__id_hab__09A971A2" FromRole="USUARIOS" ToRole="HABITACIONES" />
+    <NavigationProperty Name="REPORTES_AVERIAS" Relationship="Self.FK__REPORTES___id_us__1332DBDC" FromRole="USUARIOS" ToRole="REPORTES_AVERIAS" />
+    <NavigationProperty Name="SOLICITUD_ESTANCIA" Relationship="Self.FK__SOLICITUD__id_us__0E6E26BF" FromRole="USUARIOS" ToRole="SOLICITUD_ESTANCIA" />
+    <NavigationProperty Name="SOLICITUD_SALIDA" Relationship="Self.FK__SOLICITUD__id_us__17036CC0" FromRole="USUARIOS" ToRole="SOLICITUD_SALIDA" />
+    <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK__USUARIOS__id_tip__08B54D69" FromRole="USUARIOS" ToRole="TIPO_USUARIO" />
+  </EntityType>
+  <Association Name="FK__HABITACIO__id_ed__74AE54BC">
+    <End Role="EDIFICIOS" Type="Self.EDIFICIO" Multiplicity="1" />
+    <End Role="HABITACIONES" Type="Self.HABITACIONE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EDIFICIOS">
+        <PropertyRef Name="id_edificio" />
+      </Principal>
+      <Dependent Role="HABITACIONES">
+        <PropertyRef Name="id_edificio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIOS__id_hab__09A971A2">
+    <End Role="HABITACIONES" Type="Self.HABITACIONE" Multiplicity="0..1" />
+    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HABITACIONES">
+        <PropertyRef Name="id_habitacion" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="id_habitacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REPORTES___id_us__1332DBDC">
+    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="REPORTES_AVERIAS" Type="Self.REPORTES_AVERIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="REPORTES_AVERIAS">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SOLICITUD__id_us__0E6E26BF">
+    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="SOLICITUD_ESTANCIA" Type="Self.SOLICITUD_ESTANCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="SOLICITUD_ESTANCIA">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SOLICITUD__id_us__17036CC0">
+    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="SOLICITUD_SALIDA" Type="Self.SOLICITUD_SALIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="SOLICITUD_SALIDA">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIOS__id_tip__08B54D69">
+    <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_USUARIO">
+        <PropertyRef Name="id_tipo_usuario" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="id_tipo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RESIDENT_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EDIFICIOS" EntityType="Self.EDIFICIO" />
+    <EntitySet Name="HABITACIONES" EntityType="Self.HABITACIONE" />
+    <EntitySet Name="REPORTES_AVERIAS" EntityType="Self.REPORTES_AVERIAS" />
+    <EntitySet Name="SOLICITUD_ESTANCIA" EntityType="Self.SOLICITUD_ESTANCIA" />
+    <EntitySet Name="SOLICITUD_SALIDA" EntityType="Self.SOLICITUD_SALIDA" />
+    <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK__HABITACIO__id_ed__74AE54BC" Association="Self.FK__HABITACIO__id_ed__74AE54BC">
+      <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
+      <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIOS__id_hab__09A971A2" Association="Self.FK__USUARIOS__id_hab__09A971A2">
+      <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REPORTES___id_us__1332DBDC" Association="Self.FK__REPORTES___id_us__1332DBDC">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="REPORTES_AVERIAS" EntitySet="REPORTES_AVERIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SOLICITUD__id_us__0E6E26BF" Association="Self.FK__SOLICITUD__id_us__0E6E26BF">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="SOLICITUD_ESTANCIA" EntitySet="SOLICITUD_ESTANCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SOLICITUD__id_us__17036CC0" Association="Self.FK__SOLICITUD__id_us__17036CC0">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="SOLICITUD_SALIDA" EntitySet="SOLICITUD_SALIDA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIOS__id_tip__08B54D69" Association="Self.FK__USUARIOS__id_tip__08B54D69">
+      <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
