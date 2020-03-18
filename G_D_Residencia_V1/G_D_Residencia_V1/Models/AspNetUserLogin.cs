@@ -12,18 +12,12 @@ namespace G_D_Residencia_V1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TIPO_USUARIO
+    public partial class AspNetUserLogin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TIPO_USUARIO()
-        {
-            this.USUARIOS = new HashSet<USUARIO>();
-        }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public int id_tipo_usuario { get; set; }
-        public string descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIOS { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

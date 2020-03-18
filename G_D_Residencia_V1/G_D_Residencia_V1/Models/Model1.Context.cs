@@ -30,7 +30,12 @@ namespace G_D_Residencia_V1.Models
         public virtual DbSet<REPORTES_AVERIAS> REPORTES_AVERIAS { get; set; }
         public virtual DbSet<SOLICITUD_ESTANCIA> SOLICITUD_ESTANCIA { get; set; }
         public virtual DbSet<SOLICITUD_SALIDA> SOLICITUD_SALIDA { get; set; }
-        public virtual DbSet<TIPO_USUARIO> TIPO_USUARIO { get; set; }
         public virtual DbSet<USUARIO> USUARIOS { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

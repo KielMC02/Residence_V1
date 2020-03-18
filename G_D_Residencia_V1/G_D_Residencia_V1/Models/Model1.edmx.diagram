@@ -10,14 +10,22 @@
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.REPORTES_AVERIAS" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.SOLICITUD_ESTANCIA" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.SOLICITUD_SALIDA" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.TIPO_USUARIO" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.USUARIO" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__HABITACIO__id_ed__74AE54BC" ManuallyRouted="false" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__USUARIOS__id_hab__09A971A2" ManuallyRouted="false" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__REPORTES___id_us__1332DBDC" ManuallyRouted="false" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__SOLICITUD__id_us__0E6E26BF" ManuallyRouted="false" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__SOLICITUD__id_us__17036CC0" ManuallyRouted="false" />
-        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK__USUARIOS__id_tip__08B54D69" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetRole" Width="1.5" PointX="0.75" PointY="9.375" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetUser" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.sysdiagram" Width="1.5" PointX="10.375" PointY="3.75" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers" />
+        <AssociationConnector Association="RESIDENT_SYSTEMModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

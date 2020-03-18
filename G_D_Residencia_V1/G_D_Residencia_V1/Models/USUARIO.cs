@@ -23,7 +23,6 @@ namespace G_D_Residencia_V1.Models
         }
     
         public int id_usuario { get; set; }
-        public int id_tipo_usuario { get; set; }
         public Nullable<int> id_habitacion { get; set; }
         public string nombres { get; set; }
         public string apellidos { get; set; }
@@ -34,6 +33,7 @@ namespace G_D_Residencia_V1.Models
         public System.DateTime fecha_nac { get; set; }
         public string sexo { get; set; }
         public string direccion { get; set; }
+        public string id_Net_Users { get; set; }
     
         public virtual HABITACIONE HABITACIONE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,6 +42,6 @@ namespace G_D_Residencia_V1.Models
         public virtual ICollection<SOLICITUD_ESTANCIA> SOLICITUD_ESTANCIA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SOLICITUD_SALIDA> SOLICITUD_SALIDA { get; set; }
-        public virtual TIPO_USUARIO TIPO_USUARIO { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
