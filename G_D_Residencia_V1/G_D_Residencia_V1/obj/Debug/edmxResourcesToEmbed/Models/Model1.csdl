@@ -61,20 +61,11 @@
     <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="USUARIO" Relationship="Self.FK__SOLICITUD__id_us__17036CC0" FromRole="SOLICITUD_SALIDA" ToRole="USUARIOS" />
   </EntityType>
-  <EntityType Name="TIPO_USUARIO">
-    <Key>
-      <PropertyRef Name="id_tipo_usuario" />
-    </Key>
-    <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__id_tip__08B54D69" FromRole="TIPO_USUARIO" ToRole="USUARIOS" />
-  </EntityType>
   <EntityType Name="USUARIO">
     <Key>
       <PropertyRef Name="id_usuario" />
     </Key>
     <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_tipo_usuario" Type="Int32" Nullable="false" />
     <Property Name="id_habitacion" Type="Int32" />
     <Property Name="nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -89,7 +80,8 @@
     <NavigationProperty Name="REPORTES_AVERIAS" Relationship="Self.FK__REPORTES___id_us__1332DBDC" FromRole="USUARIOS" ToRole="REPORTES_AVERIAS" />
     <NavigationProperty Name="SOLICITUD_ESTANCIA" Relationship="Self.FK__SOLICITUD__id_us__0E6E26BF" FromRole="USUARIOS" ToRole="SOLICITUD_ESTANCIA" />
     <NavigationProperty Name="SOLICITUD_SALIDA" Relationship="Self.FK__SOLICITUD__id_us__17036CC0" FromRole="USUARIOS" ToRole="SOLICITUD_SALIDA" />
-    <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK__USUARIOS__id_tip__08B54D69" FromRole="USUARIOS" ToRole="TIPO_USUARIO" />
+    <Property Name="id_Net_Users" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers" FromRole="USUARIO" ToRole="AspNetUser" />
   </EntityType>
   <Association Name="FK__HABITACIO__id_ed__74AE54BC">
     <End Role="EDIFICIOS" Type="Self.EDIFICIO" Multiplicity="1" />
@@ -151,25 +143,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__USUARIOS__id_tip__08B54D69">
-    <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
-    <End Role="USUARIOS" Type="Self.USUARIO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TIPO_USUARIO">
-        <PropertyRef Name="id_tipo_usuario" />
-      </Principal>
-      <Dependent Role="USUARIOS">
-        <PropertyRef Name="id_tipo_usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="RESIDENT_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="EDIFICIOS" EntityType="Self.EDIFICIO" />
     <EntitySet Name="HABITACIONES" EntityType="Self.HABITACIONE" />
     <EntitySet Name="REPORTES_AVERIAS" EntityType="Self.REPORTES_AVERIAS" />
     <EntitySet Name="SOLICITUD_ESTANCIA" EntityType="Self.SOLICITUD_ESTANCIA" />
     <EntitySet Name="SOLICITUD_SALIDA" EntityType="Self.SOLICITUD_SALIDA" />
-    <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
     <EntitySet Name="USUARIOS" EntityType="Self.USUARIO" />
     <AssociationSet Name="FK__HABITACIO__id_ed__74AE54BC" Association="Self.FK__HABITACIO__id_ed__74AE54BC">
       <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
@@ -191,9 +170,141 @@
       <End Role="USUARIOS" EntitySet="USUARIOS" />
       <End Role="SOLICITUD_SALIDA" EntitySet="SOLICITUD_SALIDA" />
     </AssociationSet>
-    <AssociationSet Name="FK__USUARIOS__id_tip__08B54D69" Association="Self.FK__USUARIOS__id_tip__08B54D69">
-      <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
-      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    <EntitySet Name="C__MigrationHistory" EntityType="RESIDENT_SYSTEMModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="RESIDENT_SYSTEMModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="RESIDENT_SYSTEMModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="RESIDENT_SYSTEMModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="RESIDENT_SYSTEMModel.AspNetUser" />
+    <EntitySet Name="sysdiagrams" EntityType="RESIDENT_SYSTEMModel.sysdiagram" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOS_ASPNetUsers" Association="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="USUARIO" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="RESIDENT_SYSTEMModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="RESIDENT_SYSTEMModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="USUARIOS" Relationship="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers" FromRole="AspNetUser" ToRole="USUARIO" />
+    <NavigationProperty Name="AspNetRoles" Relationship="RESIDENT_SYSTEMModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="RESIDENT_SYSTEMModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="RESIDENT_SYSTEMModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOS_ASPNetUsers">
+    <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="RESIDENT_SYSTEMModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="id_Net_Users" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="RESIDENT_SYSTEMModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
 </Schema>

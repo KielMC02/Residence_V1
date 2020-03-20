@@ -1,41 +1,95 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <!--ICONS-->
+    <script src="https://kit.fontawesome.com/9f9e719621.js" crossorigin="anonymous"></script>
+    <!--ICONO DE PESTAÑA-->
+    <link href="~/Imagenes/ADM-LOGO-ICON.ico" rel="icon" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <!--STAR CABECERA-->
+    <div class="jumbotron-fluid mb-0">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-sm-6 logo">
+                    <img src="~/Imagenes/ADM-LOGO.png" alt="Logo" />
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 domi">
+                    <img src="~/Imagenes/escudo-rd-buscar-header.png" alt="República Dominicana" />
+                    <form class="form-inline my-2 my-lg-0 buscar">
+                        <input class="form-control search mt-2 ml-2" type="search" placeholder="Search" aria-label="Search" style="border-radius: 50px">
+                    </form>
+					<a href="#">Inicio</a> |
+					<a href="#">Contacto</a> |
+					<a href="#">Mapa del sitio</a> 
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <!--END CABECERA-->
+
+    <!--STAR MENU-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div></div>
+        <div class="vl"></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""><i class="fas fa-bars"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Residencia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Averías</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Lavado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Salidas</a>
+                </li>
+            </ul><hr />
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="padding-left: 1.4em;">
+                    @Html.Partial("_LoginPartial")
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--END MENU-->
+
+    <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+
+        <!--STAR FOOTER-->
+        <footer class="page-footer font-small bg-light" style="border-top: 2.6px solid #007BFF">
+            <div class="container">
+                <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+					<div class="col-md-8 col-md-12 mt-5">
+						<img src="~/Imagenes/escudo.png" alt="Escudo"  width="75"/> &nbsp;
+						<img src="~/Imagenes/ADM-LOGO.png" alt="Logo" />
+                    </div>
+                    <div class="col-md-8 col-12 mt-2">
+                        <p style="line-height: 1.7rem; font-size: 15px">
+							<i class="fas fa-building"></i> Torre del Sol, Av.Simón Bolívar, Santo Domingo <br />
+                            <i class="fas fa-envelope"></i> info@gestiondr.com &nbsp;
+                            <i class="fas fa-phone-alt"></i> (829) 230-4520 <br />
+                            TÉRMINOS DE USO | POLÍTICAS DE PRIVACIDAD | PREGUNTAS FRECUENTES <br />
+                            &copy; @DateTime.Now.Year TODOS LOS DERECHOS RESERVADOS
+                        </p>
+                    </div>
+                </div>
+            </div>
         </footer>
+        <!--END FOOTER-->
     </div>
 
     @Scripts.Render("~/bundles/jquery")
