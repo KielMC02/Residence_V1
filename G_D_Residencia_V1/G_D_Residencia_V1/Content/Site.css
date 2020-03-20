@@ -1,24 +1,73 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿body{
+    background: #f2f3f4;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
+}*/
 .dl-horizontal dt {
     white-space: normal;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*STAR CABECERA*/
+.jumbotron-fluid {
+    border-radius: 0px;
+    background: #fff;
+}
+
+    .jumbotron-fluid .logo {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .jumbotron-fluid .domi {
+        margin-top: 2.2em;
+        margin-bottom: 1em;
+    }
+
+.logo_small {
+    display: inline-block;
+}
+/*END CABECERA*/
+
+/*STAR MENU*/
+.navbar .navbar-brand {
+    padding-left: 1.4em;
+}
+
+.navbar .navbar-collapse .nav-item .nav-link {
+    color: #fff;
+    font-size: 1.1em;
+    padding-left: 1.4em;
+}
+
+.navbar .navbar-toggler {
+    color: #fff;
+    border: 1.2px solid #fff;
+}
+
+.navbar .navbar-toggler .lnr {
+    color: #fff;
+}
+
+.vl {
+    border-right: 2px solid #fff;
+    margin: 0.2em;
+    height: 3.4em;
+}
+
+
+/*END MENU/CABECERA*/
+
+/*SCREEN ADAPTER*/
+@media screen and (max-width: 1024px) {
+    .vl {
+        visibility: hidden;
+    }   
 }
