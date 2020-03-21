@@ -248,12 +248,14 @@
     <Content Include="Imagenes\ADM-LOGO.png" />
     <Content Include="Imagenes\averias.png" />
     <Content Include="Imagenes\boy-avatar.png" />
+    <Content Include="Imagenes\errorpaper.png" />
     <Content Include="Imagenes\escudo-rd-buscar-header.png" />
     <Content Include="Imagenes\escudo.png" />
     <Content Include="Imagenes\exit.png" />
     <Content Include="Imagenes\facebook.png" />
     <Content Include="Imagenes\instagram.png" />
     <Content Include="Imagenes\instagram2.png" />
+    <Content Include="Imagenes\passwordchange.png" />
     <Content Include="Imagenes\residence.png" />
     <Content Include="Imagenes\slider1.jpg" />
     <Content Include="Imagenes\slider2.jpg" />

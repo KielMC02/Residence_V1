@@ -1,16 +1,22 @@
 ﻿@model G_D_Residencia_V1.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Utilice otro servicio para iniciar sesión.</h4>
+<h6 style="margin-top:2.5em" class="text-uppercase font-weight-bold text-primary">
+    Instrucciones de uso
+</h6>
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
         <div>
-            <p>
-                No existen servicios de autenticación externos configurados. Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
-                para obtener información sobre cómo configurar esta aplicación ASP.NET para admitir el inicio de sesión a través de servicios externos.
-            </p>
+			<ul>
+                <li>
+                    <p>Recuerde escribir bien sus credenciales para obtener acceso dentro del sistema.</p>
+                </li>
+                <li>
+                    <p>En caso de no tener una cuenta dar clic en el enlace <b>Registrarse como usuario nuevo.</b></p>
+                </li>
+			</ul>
         </div>
     }
     else {
