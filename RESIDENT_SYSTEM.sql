@@ -4,13 +4,6 @@ go
 use RESIDENT_SYSTEM
 
 go
-create table TIPO_USUARIO
-(
-	id_tipo_usuario int not null identity primary key,
-	nombre varchar(100) null unique 
-)
-
-go
 
 create table EDIFICIOS
 (
@@ -51,7 +44,6 @@ create table USUARIOS
 	check(sexo = 'M' or sexo = 'F'),
 	direccion text,
 
-	foreign key(id_tipo_usuario) references TIPO_USUARIO(id_tipo_usuario),
 	foreign key(id_habitacion) references HABITACIONES(id_habitacion)
 )
 alter table USUARIOS add id_Net_Users nvarchar(128) null ;
