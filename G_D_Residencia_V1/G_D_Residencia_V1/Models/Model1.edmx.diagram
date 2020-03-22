@@ -21,7 +21,6 @@
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="10" />
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="12.625" />
         <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.AspNetUser" Width="1.5" PointX="3" PointY="8.125" />
-        <EntityTypeShape EntityType="RESIDENT_SYSTEMModel.sysdiagram" Width="1.5" PointX="10.375" PointY="3.75" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers" />
