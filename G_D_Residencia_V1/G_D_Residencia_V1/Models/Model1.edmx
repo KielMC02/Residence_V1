@@ -148,7 +148,7 @@
           <Property Name="direccion" Type="text" />
           <Property Name="id_Net_Users" Type="nvarchar" MaxLength="128" />
         </EntityType>
-        <Association Name="FK__HABITACIO__id_ed__74AE54BC">
+        <Association Name="FK__HABITACIO__id_ed__59063A47">
           <End Role="EDIFICIOS" Type="Self.EDIFICIOS" Multiplicity="1" />
           <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__REPORTES___id_us__1332DBDC">
+        <Association Name="FK__REPORTES___id_us__59FA5E80">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="REPORTES_AVERIAS" Type="Self.REPORTES_AVERIAS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -172,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SOLICITUD__id_us__0E6E26BF">
+        <Association Name="FK__SOLICITUD__id_us__5AEE82B9">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="SOLICITUD_ESTANCIA" Type="Self.SOLICITUD_ESTANCIA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SOLICITUD__id_us__17036CC0">
+        <Association Name="FK__SOLICITUD__id_us__5BE2A6F2">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="SOLICITUD_SALIDA" Type="Self.SOLICITUD_SALIDA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIOS__id_hab__09A971A2">
+        <Association Name="FK__USUARIOS__id_hab__5CD6CB2B">
           <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="0..1" />
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -290,23 +290,23 @@
           <EntitySet Name="SOLICITUD_SALIDA" EntityType="Self.SOLICITUD_SALIDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__HABITACIO__id_ed__74AE54BC" Association="Self.FK__HABITACIO__id_ed__74AE54BC">
+          <AssociationSet Name="FK__HABITACIO__id_ed__59063A47" Association="Self.FK__HABITACIO__id_ed__59063A47">
             <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
             <End Role="HABITACIONES" EntitySet="HABITACIONES" />
           </AssociationSet>
-          <AssociationSet Name="FK__REPORTES___id_us__1332DBDC" Association="Self.FK__REPORTES___id_us__1332DBDC">
+          <AssociationSet Name="FK__REPORTES___id_us__59FA5E80" Association="Self.FK__REPORTES___id_us__59FA5E80">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="REPORTES_AVERIAS" EntitySet="REPORTES_AVERIAS" />
           </AssociationSet>
-          <AssociationSet Name="FK__SOLICITUD__id_us__0E6E26BF" Association="Self.FK__SOLICITUD__id_us__0E6E26BF">
+          <AssociationSet Name="FK__SOLICITUD__id_us__5AEE82B9" Association="Self.FK__SOLICITUD__id_us__5AEE82B9">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="SOLICITUD_ESTANCIA" EntitySet="SOLICITUD_ESTANCIA" />
           </AssociationSet>
-          <AssociationSet Name="FK__SOLICITUD__id_us__17036CC0" Association="Self.FK__SOLICITUD__id_us__17036CC0">
+          <AssociationSet Name="FK__SOLICITUD__id_us__5BE2A6F2" Association="Self.FK__SOLICITUD__id_us__5BE2A6F2">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="SOLICITUD_SALIDA" EntitySet="SOLICITUD_SALIDA" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIOS__id_hab__09A971A2" Association="Self.FK__USUARIOS__id_hab__09A971A2">
+          <AssociationSet Name="FK__USUARIOS__id_hab__5CD6CB2B" Association="Self.FK__USUARIOS__id_hab__5CD6CB2B">
             <End Role="HABITACIONES" EntitySet="HABITACIONES" />
             <End Role="USUARIOS" EntitySet="USUARIOS" />
           </AssociationSet>
@@ -510,7 +510,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="RESIDENT_SYSTEMModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="RESIDENT_SYSTEMModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="RESIDENT_SYSTEMModel.AspNetUser" />
-          <EntitySet Name="sysdiagrams" EntityType="RESIDENT_SYSTEMModel.sysdiagram" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -527,6 +526,7 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="RESIDENT_SYSTEMModel.sysdiagram" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -588,16 +588,6 @@
           <NavigationProperty Name="USUARIOS" Relationship="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers" FromRole="AspNetUser" ToRole="USUARIO" />
           <NavigationProperty Name="AspNetRoles" Relationship="RESIDENT_SYSTEMModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -642,6 +632,16 @@
           <End Type="RESIDENT_SYSTEMModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -781,6 +781,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="RESIDENT_SYSTEMModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="RESIDENT_SYSTEMModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -792,14 +800,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="RESIDENT_SYSTEMModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

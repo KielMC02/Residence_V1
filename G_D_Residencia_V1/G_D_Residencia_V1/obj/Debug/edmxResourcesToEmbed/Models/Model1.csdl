@@ -175,7 +175,6 @@
     <EntitySet Name="AspNetUserClaims" EntityType="RESIDENT_SYSTEMModel.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="RESIDENT_SYSTEMModel.AspNetUserLogin" />
     <EntitySet Name="AspNetUsers" EntityType="RESIDENT_SYSTEMModel.AspNetUser" />
-    <EntitySet Name="sysdiagrams" EntityType="RESIDENT_SYSTEMModel.sysdiagram" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="RESIDENT_SYSTEMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -192,6 +191,7 @@
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="RESIDENT_SYSTEMModel.sysdiagram" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -253,16 +253,6 @@
     <NavigationProperty Name="USUARIOS" Relationship="RESIDENT_SYSTEMModel.FK_USUARIOS_ASPNetUsers" FromRole="AspNetUser" ToRole="USUARIO" />
     <NavigationProperty Name="AspNetRoles" Relationship="RESIDENT_SYSTEMModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -307,4 +297,14 @@
     <End Type="RESIDENT_SYSTEMModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="RESIDENT_SYSTEMModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
   </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>
