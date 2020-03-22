@@ -153,6 +153,9 @@ namespace G_D_Residencia_V1.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                //Tomamos el Email del usuario registrado.
+                string email_usuario = model.Email;
+                
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -163,7 +166,7 @@ namespace G_D_Residencia_V1.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Create", "USUARIOs", new {nuevo_usuario_email = email_usuario });
                 }
                 AddErrors(result);
             }
