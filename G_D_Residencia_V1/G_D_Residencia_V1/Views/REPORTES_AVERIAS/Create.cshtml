@@ -1,0 +1,79 @@
+﻿@model G_D_Residencia_V1.Models.REPORTES_AVERIAS
+
+@{
+    ViewBag.Title = "Registrar Avería";
+}
+
+<style>
+    .contenido {
+        margin: 6.5em;
+    }
+</style>
+
+
+    <div class="contenido mt-5 mb-5">
+        <h3 class="text-uppercase font-weight-bold text-primary">@ViewBag.Title</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <small>Llene el formulario para reportar una avería</small>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_usuario, "Id usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_usuario", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.id_usuario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.descripcion_averia, "Descripción", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.descripcion_averia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.descripcion_averia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.status, "Status", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.fecha_solicitud, "Fecha de solicitud", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.fecha_solicitud, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.fecha_solicitud, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.fecha_respuesta, "Fecha de respuesta", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.fecha_respuesta, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.fecha_respuesta, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+					<div class="col-md-offset-3 col-md-10">
+						<a class="btn btn-outline-dark" href="~/REPORTES_AVERIAS/Index">Volver</a>
+                        <input type="submit" value="Crear" class="btn btn-primary" />
+					</div>
+                </div>
+            </div>
+        }
+
+        
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>

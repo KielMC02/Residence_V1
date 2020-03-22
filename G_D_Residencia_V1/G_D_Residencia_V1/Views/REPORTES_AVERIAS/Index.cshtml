@@ -1,0 +1,139 @@
+﻿@model IEnumerable<G_D_Residencia_V1.Models.REPORTES_AVERIAS>
+
+@{
+    ViewBag.Title = "Listado de averías";
+}
+
+<style>
+	.scrollable {
+		height: 380px;
+		overflow: scroll;
+	}
+	.contenido {
+		margin: 6.5em;
+	}
+</style>
+
+
+    <div class="contenido mt-5 mb-5">
+		<div class="row">
+			<div class="col-lg-10">
+				<h3 class="text-uppercase font-weight-bold text-primary">@ViewBag.Title</h3>
+            </div>
+			<div class="col-lg-2 mb-2">
+					<a class="btn btn-outline-primary" href="~/REPORTES_AVERIAS/Create">Reportar avería</a>
+					@*@Html.ActionLink("Create New", "Create")*@
+            </div>
+        </div>
+		<hr />
+
+		<!--CARD INFORMATION-->
+		<div class="card-deck">
+			@foreach (var item in Model)
+			{
+				<div class="col-md-4">
+					<div class="row">
+						<div class="card shadow border-primary mb-3" style="max-width: 18rem;">
+							<div class="card-header">
+								<div class="card-body">
+									<h6 class="card-title">
+										<b>Status:</b> 
+										@Html.DisplayNameFor(model => model.status)
+									</h6>
+									<p class="card-text text-justify">
+										<b>Descripción</b><br />
+										@Html.DisplayNameFor(model => model.descripcion_averia)
+									</p>
+								</div>
+								<center>
+									<div class="btn-group" role="group" aria-label="Basic example">
+										<button class="btn btn-info">
+											@Html.ActionLink("Editar", "Edit", new { id = item.id_averia })
+										</button>
+										<button class="btn btn-success">
+											@Html.ActionLink("Detalles", "Details", new { id = item.id_averia })
+										</button>
+										<button class="btn btn-danger">
+											@Html.ActionLink("Borrar", "Delete", new { id = item.id_averia })
+										</button>
+									</div>
+								</center>
+								<br />
+								<div class="card-footer bg-transparent border-primary">
+									<small><b>Fecha solicitud:</b> @Html.DisplayNameFor(model => model.fecha_solicitud)</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		@*<div class="scrollable">
+			<table class="table table-hover mb-5">
+				<thead class="thead-light">
+					<tr>
+						<th>
+							@Html.DisplayNameFor(model => model.descripcion_averia)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.status)
+						</th>
+						<th>
+							CREACION = SOLICITUD
+							@Html.DisplayNameFor(model => model.fecha_solicitud)
+						</th>
+						<th>
+							@Html.DisplayNameFor(model => model.fecha_respuesta)
+						</th>
+						<th>
+							CREADO POR = USUARIO
+							@Html.DisplayNameFor(model => model.USUARIO.nombres)
+						</th>
+						<th></th>
+					</tr>
+
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.descripcion_averia)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.status)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.fecha_solicitud)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.fecha_respuesta)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.USUARIO.nombres)
+							</td>
+							<td>
+								@Html.ActionLink("Editar", "Edit", new { id = item.id_averia }) |
+								@Html.ActionLink("Detalles", "Details", new { id = item.id_averia }) |
+								@Html.ActionLink("Borrar", "Delete", new { id = item.id_averia })
+							</td>
+						</tr>
+					}
+				</thead>
+			</table>
+		</div>*@
+
+    </div>

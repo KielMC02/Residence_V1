@@ -1,0 +1,58 @@
+﻿@model G_D_Residencia_V1.Models.REPORTES_AVERIAS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>REPORTES_AVERIAS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion_averia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion_averia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_solicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_solicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_respuesta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_respuesta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO.nombres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_averia }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
