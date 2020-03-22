@@ -2,9 +2,9 @@
     ViewBag.Title = "Confirmar correo electrónico";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h4 class="text-uppercase font-weight-bold text-primary">@ViewBag.Title</h4>
 <div>
     <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+       Gracias por confirmar tu correo. Por favor @Html.ActionLink("Haz clic aquí", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
     </p>
 </div>
