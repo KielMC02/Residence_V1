@@ -11,8 +11,7 @@ namespace G_D_Residencia_V1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class USUARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,29 +21,18 @@ namespace G_D_Residencia_V1.Models
             this.SOLICITUD_ESTANCIA = new HashSet<SOLICITUD_ESTANCIA>();
             this.SOLICITUD_SALIDA = new HashSet<SOLICITUD_SALIDA>();
         }
-
+    
         public int id_usuario { get; set; }
         public Nullable<int> id_habitacion { get; set; }
-        [Display(Name = "Nombre")]
         public string nombres { get; set; }
-        [Display(Name = "Apellido")]
         public string apellidos { get; set; }
-        [Display(Name = "Matricula")]
         public string matricula { get; set; }
-        [Display(Name = "Cedula")]
         public string cedula { get; set; }
-        [Display(Name = "Telefono")]
         public string telefono { get; set; }
-        [Display(Name = "Estado Usuario")]
         public string estado_usuario { get; set; }
-        [Display(Name = "Fecha Nacimiento")]
-        [DataType(DataType.Date)]
         public System.DateTime fecha_nac { get; set; }
-        [Display(Name = "Genero")]
         public string sexo { get; set; }
-        [Display(Name = "Direccion")]
         public string direccion { get; set; }
-        [Display(Name = "Usuario")]
         public string id_Net_Users { get; set; }
     
         public virtual HABITACIONE HABITACIONE { get; set; }

@@ -14,21 +14,19 @@
 	}
 </style>
 
-
     <div class="contenido mt-5 mb-5">
 		<div class="row">
 			<div class="col-lg-10">
 				<h3 class="text-uppercase font-weight-bold text-primary">@ViewBag.Title</h3>
             </div>
 			<div class="col-lg-2 mb-2">
-					<a class="btn btn-outline-primary" href="~/REPORTES_AVERIAS/Create">Reportar avería</a>
-					@*@Html.ActionLink("Create New", "Create")*@
-            </div>
+				<a class="btn btn-outline-primary" href="~/REPORTES_AVERIAS/Create">Reportar avería</a>
+			</div>	
         </div>
 		<hr />
 
 		<!--CARD INFORMATION-->
-		<div class="card-deck">
+		<div class="card-deck mt-5">
 			@foreach (var item in Model)
 			{
 				<div class="col-md-4">
@@ -36,31 +34,31 @@
 						<div class="card shadow border-primary mb-3" style="max-width: 18rem;">
 							<div class="card-header">
 								<div class="card-body">
-									<h6 class="card-title">
-										<b>Status:</b> 
-										@Html.DisplayNameFor(model => model.status)
-									</h6>
+									<p class="card-title">
+										<b>Status:</b><br />
+										@Html.DisplayFor(modelItem => item.status)
+									</p>
 									<p class="card-text text-justify">
 										<b>Descripción</b><br />
-										@Html.DisplayNameFor(model => model.descripcion_averia)
+										@Html.DisplayFor(modelItem => item.descripcion_averia)
 									</p>
 								</div>
 								<center>
 									<div class="btn-group" role="group" aria-label="Basic example">
 										<button class="btn btn-info">
-											@Html.ActionLink("Editar", "Edit", new { id = item.id_averia })
+											@Html.ActionLink("Editar", "Edit", new { id = item.id_averia }, new { @class = "text-white" })
 										</button>
 										<button class="btn btn-success">
-											@Html.ActionLink("Detalles", "Details", new { id = item.id_averia })
+											@Html.ActionLink("Detalles", "Details", new { id = item.id_averia }, new { @class = "text-white" })
 										</button>
 										<button class="btn btn-danger">
-											@Html.ActionLink("Borrar", "Delete", new { id = item.id_averia })
+											@Html.ActionLink("Borrar", "Delete", new { id = item.id_averia }, new { @class = "text-white" })
 										</button>
 									</div>
 								</center>
 								<br />
 								<div class="card-footer bg-transparent border-primary">
-									<small><b>Fecha solicitud:</b> @Html.DisplayNameFor(model => model.fecha_solicitud)</small>
+									<small><b>Solicitud:</b> @Html.DisplayFor(modelItem => item.fecha_solicitud)</small>
 								</div>
 							</div>
 						</div>

@@ -11,28 +11,16 @@ namespace G_D_Residencia_V1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class REPORTES_AVERIAS
     {
         public int id_averia { get; set; }
-
         public int id_usuario { get; set; }
-
-        [Display(Name = "Descripción")]
         public string descripcion_averia { get; set; }
-
-        [Display(Name = "Status")]
         public string status { get; set; }
-
-        [Display(Name = "Fecha de Solicitud")]
-        [DataType(DataType.Date)]
         public System.DateTime fecha_solicitud { get; set; }
-
-        [Display(Name = "Fecha de Respuesta")]
         public Nullable<System.DateTime> fecha_respuesta { get; set; }
-
-        [Display(Name = "Creado por")]
+    
         public virtual USUARIO USUARIO { get; set; }
     }
 }

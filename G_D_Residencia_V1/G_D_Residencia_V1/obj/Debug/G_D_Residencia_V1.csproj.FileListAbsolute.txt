@@ -343,7 +343,7 @@ C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Res
 C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\obj\Debug\G_D_Residencia_V1.csprojAssemblyReference.cache
 C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\obj\Debug\G_D_Residencia_V1.csproj.CopyComplete
 C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\obj\Debug\G_D_Residencia_V1.dll
 C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\obj\Debug\G_D_Residencia_V1.pdb
+C:\Users\Suman\source\repos\FINAL - ADMIN\Residence_V1\G_D_Residencia_V1\G_D_Residencia_V1\obj\Debug\G_D_Residencia_V1.csprojAssemblyReference.cache

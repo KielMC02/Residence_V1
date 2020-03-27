@@ -10,113 +10,112 @@ using G_D_Residencia_V1.Models;
 
 namespace G_D_Residencia_V1.Controllers
 {
-    [Authorize]
-    public class REPORTES_AVERIASController : Controller
+    public class SOLICITUD_ESTANCIAController : Controller
     {
         private RESIDENT_SYSTEMEntities db = new RESIDENT_SYSTEMEntities();
-        
-        // GET: REPORTES_AVERIAS
+
+        // GET: SOLICITUD_ESTANCIA
         public ActionResult Index()
         {
-            var rEPORTES_AVERIAS = db.REPORTES_AVERIAS.Include(r => r.USUARIO);
-            return View(rEPORTES_AVERIAS.ToList());
+            var sOLICITUD_ESTANCIA = db.SOLICITUD_ESTANCIA.Include(s => s.USUARIO);
+            return View(sOLICITUD_ESTANCIA.ToList());
         }
 
-        // GET: REPORTES_AVERIAS/Details/5
+        // GET: SOLICITUD_ESTANCIA/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            REPORTES_AVERIAS rEPORTES_AVERIAS = db.REPORTES_AVERIAS.Find(id);
-            if (rEPORTES_AVERIAS == null)
+            SOLICITUD_ESTANCIA sOLICITUD_ESTANCIA = db.SOLICITUD_ESTANCIA.Find(id);
+            if (sOLICITUD_ESTANCIA == null)
             {
                 return HttpNotFound();
             }
-            return View(rEPORTES_AVERIAS);
+            return View(sOLICITUD_ESTANCIA);
         }
 
-        // GET: REPORTES_AVERIAS/Create
+        // GET: SOLICITUD_ESTANCIA/Create
         public ActionResult Create()
         {
             ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres");
             return View();
         }
 
-        // POST: REPORTES_AVERIAS/Create
+        // POST: SOLICITUD_ESTANCIA/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_averia,id_usuario,descripcion_averia,status,fecha_solicitud,fecha_respuesta")] REPORTES_AVERIAS rEPORTES_AVERIAS)
+        public ActionResult Create([Bind(Include = "id_solicitud,id_usuario,motivo_solicitud,seguro_medico,carta_conducta,cedula,fecha_solicitud,fecha_respuesta,estado_solicitud")] SOLICITUD_ESTANCIA sOLICITUD_ESTANCIA)
         {
             if (ModelState.IsValid)
             {
-                db.REPORTES_AVERIAS.Add(rEPORTES_AVERIAS);
+                db.SOLICITUD_ESTANCIA.Add(sOLICITUD_ESTANCIA);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres", rEPORTES_AVERIAS.id_usuario);
-            return View(rEPORTES_AVERIAS);
+            ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres", sOLICITUD_ESTANCIA.id_usuario);
+            return View(sOLICITUD_ESTANCIA);
         }
 
-        // GET: REPORTES_AVERIAS/Edit/5
+        // GET: SOLICITUD_ESTANCIA/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            REPORTES_AVERIAS rEPORTES_AVERIAS = db.REPORTES_AVERIAS.Find(id);
-            if (rEPORTES_AVERIAS == null)
+            SOLICITUD_ESTANCIA sOLICITUD_ESTANCIA = db.SOLICITUD_ESTANCIA.Find(id);
+            if (sOLICITUD_ESTANCIA == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres", rEPORTES_AVERIAS.id_usuario);
-            return View(rEPORTES_AVERIAS);
+            ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres", sOLICITUD_ESTANCIA.id_usuario);
+            return View(sOLICITUD_ESTANCIA);
         }
 
-        // POST: REPORTES_AVERIAS/Edit/5
+        // POST: SOLICITUD_ESTANCIA/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_averia,id_usuario,descripcion_averia,status,fecha_solicitud,fecha_respuesta")] REPORTES_AVERIAS rEPORTES_AVERIAS)
+        public ActionResult Edit([Bind(Include = "id_solicitud,id_usuario,motivo_solicitud,seguro_medico,carta_conducta,cedula,fecha_solicitud,fecha_respuesta,estado_solicitud")] SOLICITUD_ESTANCIA sOLICITUD_ESTANCIA)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rEPORTES_AVERIAS).State = EntityState.Modified;
+                db.Entry(sOLICITUD_ESTANCIA).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres", rEPORTES_AVERIAS.id_usuario);
-            return View(rEPORTES_AVERIAS);
+            ViewBag.id_usuario = new SelectList(db.USUARIOS, "id_usuario", "nombres", sOLICITUD_ESTANCIA.id_usuario);
+            return View(sOLICITUD_ESTANCIA);
         }
 
-        // GET: REPORTES_AVERIAS/Delete/5
+        // GET: SOLICITUD_ESTANCIA/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            REPORTES_AVERIAS rEPORTES_AVERIAS = db.REPORTES_AVERIAS.Find(id);
-            if (rEPORTES_AVERIAS == null)
+            SOLICITUD_ESTANCIA sOLICITUD_ESTANCIA = db.SOLICITUD_ESTANCIA.Find(id);
+            if (sOLICITUD_ESTANCIA == null)
             {
                 return HttpNotFound();
             }
-            return View(rEPORTES_AVERIAS);
+            return View(sOLICITUD_ESTANCIA);
         }
 
-        // POST: REPORTES_AVERIAS/Delete/5
+        // POST: SOLICITUD_ESTANCIA/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            REPORTES_AVERIAS rEPORTES_AVERIAS = db.REPORTES_AVERIAS.Find(id);
-            db.REPORTES_AVERIAS.Remove(rEPORTES_AVERIAS);
+            SOLICITUD_ESTANCIA sOLICITUD_ESTANCIA = db.SOLICITUD_ESTANCIA.Find(id);
+            db.SOLICITUD_ESTANCIA.Remove(sOLICITUD_ESTANCIA);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
