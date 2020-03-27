@@ -1,0 +1,88 @@
+﻿@model G_D_Residencia_V1.Models.SOLICITUD_ESTANCIA
+
+@{
+    ViewBag.Title = "Borrar solicitud";
+}
+
+<div class="container mb-5">
+    <div class="mt-4">
+        <h4 class="text-uppercase font-weight-bold text-primary">
+            @ViewBag.Title
+        </h4>
+        <small>¿Deseas borrar está solititud?</small>
+        <hr />
+
+        <div class="row mt-3">
+            <div class="col-lg-6">
+                <h6>
+                    Creado por:
+                </h6>
+                @Html.DisplayFor(model => model.USUARIO.nombres)
+            </div>
+            <div class="col-lg-6">
+                <h6>
+                    Estado de solicitud:
+                </h6>
+                @Html.DisplayFor(model => model.estado_solicitud)
+            </div>
+        </div> 
+        <br />    
+        
+		<div class="row">
+            <div class="col-lg-6">
+                <h6>
+                    Motivo de la solicitud:
+                </h6>
+                @Html.DisplayFor(model => model.motivo_solicitud)
+            </div>
+        </div>
+		<br />
+
+		<div class="row">
+            <div class="col-lg-6">
+                <h6>
+                    Fecha de solicitud:
+                </h6>
+                @Html.DisplayFor(model => model.fecha_solicitud)
+            </div>
+            <div class="col-lg-6">
+                <h6>
+                    Fecha de respuesta:
+                </h6>
+                @Html.DisplayFor(model => model.fecha_respuesta)
+            </div>
+        </div>
+		<br />
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h6>Seguro médico: </h6>
+                @Html.DisplayFor(model => model.seguro_medico)
+            </div>
+            <br />
+            <div class="col-lg-6">
+                <h6>Carta conducta: </h6>
+                @Html.DisplayFor(model => model.carta_conducta)
+            </div>
+            <br />
+            <div class="col-lg-6 mt-2">
+                <h6>Cédula: </h6>
+                @Html.DisplayFor(model => model.cedula)
+            </div>
+        </div>
+    </div>
+        
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color mt-4">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    
+                @Html.ActionLink("Volver", "Index", new { Styles = "text-decoration: none"})
+                 
+        </div>
+    }
+
+</div>

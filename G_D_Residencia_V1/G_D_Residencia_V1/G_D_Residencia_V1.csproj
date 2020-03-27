@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\REPORTES_AVERIASController.cs" />
+    <Compile Include="Controllers\SOLICITUD_ESTANCIAController.cs" />
     <Compile Include="Controllers\USUARIOsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,6 +259,7 @@
     <Content Include="Imagenes\instagram.png" />
     <Content Include="Imagenes\instagram2.png" />
     <Content Include="Imagenes\passwordchange.png" />
+    <Content Include="Imagenes\request.png" />
     <Content Include="Imagenes\residence.png" />
     <Content Include="Imagenes\slider1.jpg" />
     <Content Include="Imagenes\slider2.jpg" />
@@ -440,6 +442,11 @@
     <Content Include="Views\REPORTES_AVERIAS\Edit.cshtml" />
     <Content Include="Views\REPORTES_AVERIAS\Index.cshtml" />
     <Content Include="Views\Home\Lavados.cshtml" />
+    <Content Include="Views\SOLICITUD_ESTANCIA\Create.cshtml" />
+    <Content Include="Views\SOLICITUD_ESTANCIA\Delete.cshtml" />
+    <Content Include="Views\SOLICITUD_ESTANCIA\Details.cshtml" />
+    <Content Include="Views\SOLICITUD_ESTANCIA\Edit.cshtml" />
+    <Content Include="Views\SOLICITUD_ESTANCIA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

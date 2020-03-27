@@ -1,0 +1,178 @@
+﻿@model IEnumerable<G_D_Residencia_V1.Models.SOLICITUD_ESTANCIA>
+
+@{
+    ViewBag.Title = "Solicitudes de residencias";
+}
+
+<style>
+	.content-fluid {
+		margin: 4.5em;
+	}
+</style>
+
+
+<div class="content-fluid mt-5">
+	<div class="row">
+		<div class="col-lg-10">
+			<h3 class="text-uppercase font-weight-bold text-primary">@ViewBag.Title</h3>
+		</div>
+		<div class="col-lg-2">
+			<a class="btn btn-outline-primary" href="~/SOLICITUD_ESTANCIA/Create">Crear solicitud</a>
+		</div>
+	</div>
+	<hr>
+
+	@foreach (var item in Model)
+	{
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="card bg-transparent">
+					<p class="mt-0 mb-1 card-header">
+						<b>Solicitante:</b> &nbsp;
+						@Html.DisplayFor(modelItem => item.USUARIO.nombres)
+					</p>
+					<div class="card-body">
+						<ul class="list-unstyled">
+							<li class="media">
+								<img class="mr-4 mt-4" src="~/Imagenes/request.png" alt="SolicitudIcon" width="85">
+								<div class="media-body">
+									<div class="row mt-3">
+										<div class="col-lg-4 col-sm-12">
+											<b>Fecha Solicitud: </b><br />
+											@Html.DisplayFor(modelItem => item.fecha_solicitud)
+										</div>
+
+										<div class="col-lg-4 col-sm-12">
+											<b>Estado de solicitud:</b> <br />
+											@Html.DisplayFor(modelItem => item.estado_solicitud)
+										</div>
+
+										<div class="col-lg-4 col-sm-12">
+											<b>Motivos de la solicitud:</b> <br />
+											@Html.DisplayFor(modelItem => item.motivo_solicitud)
+										</div>
+									</div>
+
+									<div class="float-lg-right mt-4">
+										@Html.ActionLink("Editar", "Edit", new { id = item.id_solicitud }) |
+										@Html.ActionLink("Detalles", "Details", new { id = item.id_solicitud }) |
+										@Html.ActionLink("Borrar", "Delete", new { id = item.id_solicitud })
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+
+
+		<!--LIST INFORMATION-->
+		@*@foreach (var item in Model)
+			{
+				<ul class="list-unstyled">
+					<li class="media">
+						<img class="mr-3" src="~/Imagenes/request.png" alt="SolicitudIcon" width="82">
+						<div class="media-body">
+							<p class="mt-0 mb-1">
+								<b>Nombre del solicitante:</b> &nbsp;
+								@Html.DisplayFor(modelItem => item.USUARIO.nombres)
+							</p>
+
+							<div class="row mt-3">
+								<div class="col-lg-4 col-sm-12">
+									<b>Fecha Solicitud: </b><br />
+									@Html.DisplayFor(modelItem => item.fecha_solicitud)
+								</div>
+
+								<div class="col-lg-4 col-sm-12">
+									<b>Estado de solicitud:</b> <br />
+									@Html.DisplayFor(modelItem => item.estado_solicitud)
+								</div>
+
+								<div class="col-lg-4 col-sm-12">
+									<b>Motivos de la solicitud:</b> <br />
+									@Html.DisplayFor(modelItem => item.motivo_solicitud)
+								</div>
+							</div>
+
+							<div class="mx-lg-auto float-lg-right mt-4">
+								@Html.ActionLink("Editar", "Edit", new { id = item.id_solicitud }) |
+								@Html.ActionLink("Detalles", "Details", new { id = item.id_solicitud }) |
+								@Html.ActionLink("Borrar", "Delete", new { id = item.id_solicitud })
+							</div>
+						</div>
+					</li>
+				</ul>
+				<hr />
+			}*@
+
+
+		@*<table class="table mt-4">
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.motivo_solicitud)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.seguro_medico)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.carta_conducta)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.cedula)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.fecha_solicitud)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.fecha_respuesta)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.estado_solicitud)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.USUARIO.nombres)
+					</th>
+					<th></th>
+				</tr>
+
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.motivo_solicitud)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.seguro_medico)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.carta_conducta)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.cedula)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.fecha_solicitud)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.fecha_respuesta)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.estado_solicitud)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.USUARIO.nombres)
+						</td>
+						<td>
+							@Html.ActionLink("Edit", "Edit", new { id = item.id_solicitud }) |
+							@Html.ActionLink("Details", "Details", new { id = item.id_solicitud }) |
+							@Html.ActionLink("Delete", "Delete", new { id = item.id_solicitud })
+						</td>
+					</tr>
+				}
+
+			</table>*@
+
+	</div>
