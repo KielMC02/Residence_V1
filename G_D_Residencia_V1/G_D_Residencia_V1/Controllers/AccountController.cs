@@ -166,7 +166,7 @@ namespace G_D_Residencia_V1.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
 
-                    return RedirectToAction("Create", "USUARIOs", new {nuevo_usuario_email = email_usuario });
+                    return RedirectToAction("Create", "USUARIOs", new { email_usuario  = email_usuario });
                 }
                 AddErrors(result);
             }

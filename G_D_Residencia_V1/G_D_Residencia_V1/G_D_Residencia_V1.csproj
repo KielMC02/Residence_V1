@@ -439,6 +439,7 @@
     <Content Include="Views\REPORTES_AVERIAS\Details.cshtml" />
     <Content Include="Views\REPORTES_AVERIAS\Edit.cshtml" />
     <Content Include="Views\REPORTES_AVERIAS\Index.cshtml" />
+    <Content Include="Views\Home\Lavados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

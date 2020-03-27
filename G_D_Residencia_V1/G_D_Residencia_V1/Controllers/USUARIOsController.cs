@@ -37,10 +37,12 @@ namespace G_D_Residencia_V1.Controllers
         }
 
         // GET: USUARIOs/Create
-        public ActionResult Create()
+        public ActionResult Create(string email_usuario)
         {
             ViewBag.id_habitacion = new SelectList(db.HABITACIONES, "id_habitacion", "habitacion");
-            ViewBag.id_Net_Users = new SelectList(db.AspNetUsers, "Id", "Email");
+            //ViewBag.id_Net_Users = new SelectList(db.AspNetUsers, "Id", "Email");
+           
+            ViewBag.Email_Usuario = email_usuario;
             return View();
         }
 
@@ -49,8 +51,10 @@ namespace G_D_Residencia_V1.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_usuario,id_habitacion,nombres,apellidos,matricula,cedula,telefono,estado_usuario,fecha_nac,sexo,direccion,id_Net_Users")] USUARIO uSUARIO)
+        public ActionResult Create(string Email_Usuario,[Bind(Include = "id_usuario,id_habitacion,nombres,apellidos,matricula,cedula,telefono,estado_usuario,fecha_nac,sexo,direccion,id_Net_Users")] USUARIO uSUARIO)
         {
+            var id_usuario = Convert.ToString((from x in db.AspNetUsers where x.Email == Email_Usuario select x.Id).First());
+            uSUARIO.id_Net_Users = Convert.ToString(id_usuario);
             //id_usuario = from s in db.AspNetUsers where s.Email == email_usuario
             //uSUARIO.id_Net_Users =
             if (ModelState.IsValid)

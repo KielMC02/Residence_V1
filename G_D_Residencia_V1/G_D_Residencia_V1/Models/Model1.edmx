@@ -148,7 +148,7 @@
           <Property Name="direccion" Type="text" />
           <Property Name="id_Net_Users" Type="nvarchar" MaxLength="128" />
         </EntityType>
-        <Association Name="FK__HABITACIO__id_ed__59063A47">
+        <Association Name="FK__HABITACIO__id_ed__59FA5E80">
           <End Role="EDIFICIOS" Type="Self.EDIFICIOS" Multiplicity="1" />
           <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__REPORTES___id_us__59FA5E80">
+        <Association Name="FK__REPORTES___id_us__5AEE82B9">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="REPORTES_AVERIAS" Type="Self.REPORTES_AVERIAS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -172,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SOLICITUD__id_us__5AEE82B9">
+        <Association Name="FK__SOLICITUD__id_us__5BE2A6F2">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="SOLICITUD_ESTANCIA" Type="Self.SOLICITUD_ESTANCIA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SOLICITUD__id_us__5BE2A6F2">
+        <Association Name="FK__SOLICITUD__id_us__5CD6CB2B">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
           <End Role="SOLICITUD_SALIDA" Type="Self.SOLICITUD_SALIDA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIOS__id_hab__5CD6CB2B">
+        <Association Name="FK__USUARIOS__id_hab__5DCAEF64">
           <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="0..1" />
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -290,23 +290,23 @@
           <EntitySet Name="SOLICITUD_SALIDA" EntityType="Self.SOLICITUD_SALIDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__HABITACIO__id_ed__59063A47" Association="Self.FK__HABITACIO__id_ed__59063A47">
+          <AssociationSet Name="FK__HABITACIO__id_ed__59FA5E80" Association="Self.FK__HABITACIO__id_ed__59FA5E80">
             <End Role="EDIFICIOS" EntitySet="EDIFICIOS" />
             <End Role="HABITACIONES" EntitySet="HABITACIONES" />
           </AssociationSet>
-          <AssociationSet Name="FK__REPORTES___id_us__59FA5E80" Association="Self.FK__REPORTES___id_us__59FA5E80">
+          <AssociationSet Name="FK__REPORTES___id_us__5AEE82B9" Association="Self.FK__REPORTES___id_us__5AEE82B9">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="REPORTES_AVERIAS" EntitySet="REPORTES_AVERIAS" />
           </AssociationSet>
-          <AssociationSet Name="FK__SOLICITUD__id_us__5AEE82B9" Association="Self.FK__SOLICITUD__id_us__5AEE82B9">
+          <AssociationSet Name="FK__SOLICITUD__id_us__5BE2A6F2" Association="Self.FK__SOLICITUD__id_us__5BE2A6F2">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="SOLICITUD_ESTANCIA" EntitySet="SOLICITUD_ESTANCIA" />
           </AssociationSet>
-          <AssociationSet Name="FK__SOLICITUD__id_us__5BE2A6F2" Association="Self.FK__SOLICITUD__id_us__5BE2A6F2">
+          <AssociationSet Name="FK__SOLICITUD__id_us__5CD6CB2B" Association="Self.FK__SOLICITUD__id_us__5CD6CB2B">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="SOLICITUD_SALIDA" EntitySet="SOLICITUD_SALIDA" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIOS__id_hab__5CD6CB2B" Association="Self.FK__USUARIOS__id_hab__5CD6CB2B">
+          <AssociationSet Name="FK__USUARIOS__id_hab__5DCAEF64" Association="Self.FK__USUARIOS__id_hab__5DCAEF64">
             <End Role="HABITACIONES" EntitySet="HABITACIONES" />
             <End Role="USUARIOS" EntitySet="USUARIOS" />
           </AssociationSet>

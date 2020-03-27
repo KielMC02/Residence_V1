@@ -10,6 +10,7 @@ using G_D_Residencia_V1.Models;
 
 namespace G_D_Residencia_V1.Controllers
 {
+    [Authorize(Roles="Administrador")]
     public class REPORTES_AVERIASController : Controller
     {
         private RESIDENT_SYSTEMEntities db = new RESIDENT_SYSTEMEntities();
